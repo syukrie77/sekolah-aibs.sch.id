@@ -13,4 +13,22 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const hero = defineCollection({
+  type: 'data',
+  schema: z.object({
+    badge: z.string(),
+    headline: z.string(),
+    highlight: z.string(),
+    description: z.string(),
+    ctaPrimary: z.object({
+      text: z.string(),
+      href: z.string(),
+    }),
+    ctaSecondary: z.object({
+      text: z.string(),
+      href: z.string(),
+    }),
+  }),
+});
+
+export const collections = { blog, hero };

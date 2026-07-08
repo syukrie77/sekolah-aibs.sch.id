@@ -1,12 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 import site from '../data/site.json';
 
+const heroCollection = await getCollection('hero');
+const hero = heroCollection[0]?.data;
+
 const jurusan = [
-  { title: 'AI Coding', desc: 'Bangun aplikasi cerdas, machine learning, dan otomasi.', icon: '💻', href: '/jurusan#coding' },
-  { title: 'AI Design', desc: 'Rancang visual & UX generatif dengan tools AI terkini.', icon: '🎨', href: '/jurusan#design' },
-  { title: 'AI Cybersecurity', desc: 'Amankan sistem dan data di era kecerdasan buatan.', icon: '🛡️', href: '/jurusan#cybersecurity' },
+  { title: 'AI Programmer', desc: 'Belajar membuat website, aplikasi, dan solusi AI modern.', icon: '💻', href: '/jurusan#coding' },
+  { title: 'AI Bisnis Digital', desc: 'Belajar desain, konten kreatif, digital marketing, dan bisnis berbasis AI.', icon: '🎨', href: '/jurusan#design' },
+  { title: 'Keamanan Siber', desc: 'Belajar keamanan jaringan, ethical hacking, dan digital forensik berbasis AI.', icon: '🛡️', href: '/jurusan#cybersecurity' },
 ];
+
+
+
 
 const features = [
   { title: 'Kurikulum Berbasis AI', desc: 'Materi selalu update mengikuti perkembangan teknologi.' },
@@ -20,22 +27,21 @@ const features = [
   <section class="relative overflow-hidden bg-gradient-to-br from-brand-50 to-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 md:py-28 text-center">
       <span class="inline-block bg-brand-100 text-brand-700 text-xs font-semibold px-3 py-1 rounded-full mb-5">
-        {site.tagline}
+        {hero?.badge || site.tagline}
       </span>
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
-        Belajar Membangun Masa Depan dengan
-        <span class="text-brand-600"> Kecerdasan Buatan</span>
+        {hero?.headline || 'Belajar Membangun Masa Depan dengan'}
+        <span class="text-brand-600"> {hero?.highlight || 'Kecerdasan Buatan'}</span>
       </h1>
       <p class="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
-        AIBS adalah sekolah AI satu-satunya di Indonesia. Pilih jurusan AI Coding, AI Design,
-        atau AI Cybersecurity dan jadilah talenta masa depan.
+        {hero?.description || 'AI Boarding School (AIBS) adalah sekolah AI satu-satunya di Indonesia Jago AI Pintar Ngaji Full Praktik. Pilih jurusan AI Programmer, AI Bisnis Digital, atau Keamanan Siber dan jadilah talenta masa depan.'}
       </p>
       <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="/ppdb" class="bg-brand-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-brand-700">
-          Daftar PPDB Sekarang
+        <a href={hero?.ctaPrimary?.href || '/ppdb'} class="bg-brand-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-brand-700">
+          {hero?.ctaPrimary?.text || 'Daftar PPDB Sekarang'}
         </a>
-        <a href="/jurusan" class="bg-white text-brand-700 border border-brand-200 px-6 py-3 rounded-lg font-medium hover:bg-brand-50">
-          Lihat Jurusan
+        <a href={hero?.ctaSecondary?.href || '/jurusan'} class="bg-white text-brand-700 border border-brand-200 px-6 py-3 rounded-lg font-medium hover:bg-brand-50">
+          {hero?.ctaSecondary?.text || 'Lihat Jurusan'}
         </a>
       </div>
     </div>
@@ -46,6 +52,8 @@ const features = [
     <div class="text-center mb-10">
       <h2 class="text-3xl font-bold text-gray-900">Jurusan Unggulan</h2>
       <p class="text-gray-600 mt-2">Tiga bidang AI paling dibutuhkan industri.</p>
+
+
     </div>
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {jurusan.map((j) => (

@@ -40,3 +40,24 @@ collections:
           - { name: phone, label: Telepon, widget: string }
           - { name: whatsapp, label: Nomor WhatsApp (format 62...), widget: string }
           - { name: address, label: Alamat, widget: string }
+
+      - name: hero
+        label: "Hero Section"
+        file: src/content/hero/hero.json
+        fields:
+          - { name: badge, label: Badge Text, widget: string, hint: "Teks badge di atas judul" }
+          - { name: headline, label: Judul Utama, widget: string, hint: "Bagian pertama dari judul hero" }
+          - { name: highlight, label: Kata Kunci Highlight, widget: string, hint: "Kata yang di-highlight di judul" }
+          - { name: description, label: Deskripsi, widget: text, hint: "Paragraf deskripsi hero" }
+          - label: Tombol Utama
+            name: ctaPrimary
+            widget: object
+            fields:
+              - { name: text, label: Teks Tombol, widget: string }
+              - { name: href, label: Link Tujuan, widget: string }
+          - label: Tombol Kedua
+            name: ctaSecondary
+            widget: object
+            fields:
+              - { name: text, label: Teks Tombol, widget: string }
+              - { name: href, label: Link Tujuan, widget: string }

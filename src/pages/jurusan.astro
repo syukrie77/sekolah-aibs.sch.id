@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+// Import komponen Image dan file gambarnya
+import { Image } from 'astro:assets';
+import bannerJurusan from '../assets/images/Jurusan AIBS.jpg';
 
 const jurusan = [
   {
@@ -24,18 +27,15 @@ const jurusan = [
     skills: ['Keamanan Jaringan', 'Ethical Hacking', 'Digital Forensik', 'Security Automation AI'],
   },
 ];
-
-
-
 ---
 
 <Layout
   title="Jurusan"
   description="Tiga jurusan unggulan AIBS: AI Programmer, AI Bisnis Digital, dan Keamanan Siber."
-
-
-
 >
+  <!-- Banner Gambar -->
+  <Image src={bannerJurusan} alt="Banner Jurusan SMK AIBS" class="w-full h-auto object-cover" />
+
   <section class="bg-brand-50">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center">
       <h1 class="text-4xl font-extrabold text-gray-900">Jurusan Kami</h1>

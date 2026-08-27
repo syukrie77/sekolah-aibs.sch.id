@@ -1,12 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import site from '../data/site.json';
+// Import komponen Image dan file gambarnya
+import { Image } from 'astro:assets';
+import bannerKontak from '../assets/images/Kontak AIBS.jpg';
 ---
 
 <Layout
   title="Kontak"
   description="Hubungi AIBS via WhatsApp, email, atau kunjungi kampus kami."
 >
+  <!-- Banner Gambar -->
+  <Image src={bannerKontak} alt="Banner Kontak SMK AIBS" class="w-full h-auto object-cover" />
+
   <section class="bg-brand-50">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center">
       <h1 class="text-4xl font-extrabold text-gray-900">Hubungi Kami</h1>

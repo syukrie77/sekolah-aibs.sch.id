@@ -3,6 +3,11 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import site from '../data/site.json';
 
+// Import komponen Image bawaan Astro
+import { Image } from 'astro:assets';
+// Import file gambar banner Anda
+import bannerHome from '../assets/images/Home AIBS.jpg';
+
 const heroCollection = await getCollection('hero');
 const hero = heroCollection[0]?.data;
 
@@ -12,9 +17,6 @@ const jurusan = [
   { title: 'Keamanan Siber', desc: 'Belajar keamanan jaringan, ethical hacking, dan digital forensik berbasis AI.', icon: '🛡️', href: '/jurusan#cybersecurity' },
 ];
 
-
-
-
 const features = [
   { title: 'Kurikulum Berbasis AI', desc: 'Materi selalu update mengikuti perkembangan teknologi.' },
   { title: 'Mentor Praktisi', desc: 'Belajar langsung dari profesional industri AI.' },
@@ -22,7 +24,10 @@ const features = [
 ];
 ---
 
-<Layout title="Home">
+<Layout title="Beranda | SMK AIBS">
+  <!-- Panggil gambar Banner di posisi paling atas halaman (di bawah navbar) -->
+  <Image src={bannerHome} alt="Banner Home SMK AIBS" class="w-full h-auto object-cover" />
+
   <!-- Hero -->
   <section class="relative overflow-hidden bg-gradient-to-br from-brand-50 to-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 md:py-28 text-center">
@@ -52,8 +57,6 @@ const features = [
     <div class="text-center mb-10">
       <h2 class="text-3xl font-bold text-gray-900">Jurusan Unggulan</h2>
       <p class="text-gray-600 mt-2">Tiga bidang AI paling dibutuhkan industri.</p>
-
-
     </div>
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {jurusan.map((j) => (

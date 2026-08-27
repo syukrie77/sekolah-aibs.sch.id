@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+// Import komponen Image dan file gambarnya
+import { Image } from 'astro:assets';
+import bannerTentang from '../assets/images/Tentang AIBS.jpg';
 
 const values = [
   { title: 'Inovasi', desc: 'Selalu di garis depan teknologi AI.' },
@@ -12,6 +15,9 @@ const values = [
   title="Tentang Kami"
   description="Mengenal AIBS, sekolah AI satu-satunya di Indonesia dengan visi mencetak talenta kecerdasan buatan."
 >
+  <!-- Banner Gambar -->
+  <Image src={bannerTentang} alt="Banner Tentang SMK AIBS" class="w-full h-auto object-cover" />
+
   <section class="bg-brand-50">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center">
       <h1 class="text-4xl font-extrabold text-gray-900">Tentang AIBS</h1>
@@ -30,8 +36,6 @@ const values = [
     <p>
       Dengan kurikulum yang dirancang bersama praktisi industri, siswa belajar langsung membangun
       solusi nyata di bidang AI Programmer, AI Bisnis Digital, dan Keamanan Siber.
-
-
     </p>
 
     <div class="grid gap-6 sm:grid-cols-3 pt-6">

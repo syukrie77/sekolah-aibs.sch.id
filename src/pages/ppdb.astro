@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import site from '../data/site.json';
+// Import komponen Image dan file gambarnya
+import { Image } from 'astro:assets';
+import bannerPpdb from '../assets/images/PPDB AIBS.jpg';
 
 const steps = [
   { n: '1', title: 'Konsultasi', desc: 'Chat AI PPDB kami untuk memilih jurusan yang tepat.' },
@@ -16,6 +19,9 @@ const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Halo A
   title="PPDB"
   description="Penerimaan Peserta Didik Baru (PPDB) AIBS. Daftar online dan konsultasi via chat AI WhatsApp."
 >
+  <!-- Banner Gambar -->
+  <Image src={bannerPpdb} alt="Banner PPDB SMK AIBS" class="w-full h-auto object-cover" />
+
   <section class="bg-brand-600 text-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 py-16 text-center">
       <h1 class="text-4xl font-extrabold">PPDB AIBS</h1>
@@ -65,9 +71,7 @@ const waLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent('Halo A
             <option value="AI Programmer">AI Programmer</option>
             <option value="AI Bisnis Digital">AI Bisnis Digital</option>
             <option value="Keamanan Siber">Keamanan Siber</option>
-
           </select>
-
         </div>
         <button type="submit" class="w-full bg-brand-600 text-white py-3 rounded-lg font-medium hover:bg-brand-700">
           Kirim Pendaftaran
